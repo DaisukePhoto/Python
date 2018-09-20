@@ -1,0 +1,36 @@
+前提条件：python3の実行環境をAnaconda3で行なっている
+
+コマンド：
+$conda install selenium
+$conda install beautifulsoup4
+$conda install python-chromedriver-binary
+
+上記を行なった後に.pyファイルで
+
+"""
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import chromedriver_binary
+
+# ブラウザーを起動
+options = Options()
+options.add_argument('--headless')
+driver = webdriver.Chrome(chrome_options=options)
+
+# Google検索画面にアクセス
+driver.get('https://www.google.co.jp/')
+
+# htmlを取得・表示
+html = driver.page_source
+print(html)
+
+# ブラウザーを終了
+driver.quit()
+"""
+
+を実行できればOK
+
+
+参考
+http://mankuro.hateblo.jp/entry/2017/05/02/beautifulsoup4-find-and-find_all/
+https://uxmilk.jp/8662

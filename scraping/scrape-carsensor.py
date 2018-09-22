@@ -42,8 +42,10 @@ for maker in makers:
     makers_list[makers_count].append(maker)
     makers_count += 1
 
+
+
 #csvに書き込み
-with open('makers.csv', 'w') as f:
+with open('index_makers.csv', 'w') as f:
     writer = csv.writer(f, lineterminator='\n')
     writer.writerows(makers_list)
 

@@ -26,6 +26,7 @@ soup = BeautifulSoup(html, "html.parser")
 # メーカー名を取得
 makers = soup.find_all("a","js_makerMenu",href="#")
 makers_list = []
+makers_count = 0
 # 除外する項目
 skip_list = ["こだわらない","国産車その他","輸入車その他"]
 
@@ -36,12 +37,15 @@ for maker in makers:
   maker = re.sub(r'\s', "", maker) #空白
   #除外項目をスキップ
   if not maker in skip_list:
-    makers_list.append(maker)
+    makers_list.append([])
+    makers_list[makers_count].append(str(makers_count+1))
+    makers_list[makers_count].append(maker)
+    makers_count += 1
 
 #csvに書き込み
 with open('makers.csv', 'w') as f:
-    writer = csv.writer(f, lineterminator='\n') # 改行コード（\n）を指定しておく
-    writer.writerow(makers_list)
+    writer = csv.writer(f, lineterminator='\n')
+    writer.writerows(makers_list)
 
 # ブラウザを終了
 browser.quit()

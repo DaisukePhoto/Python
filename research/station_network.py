@@ -2,43 +2,32 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import csv
-import json
+import numpy
 
-# G = nx.read_edgelist('csv_roseneki_13.csv', nodetype=str)
-
-station_data = []
-
-csv_file = open("csv_roseneki_13.csv", "r",
-                encoding="utf_8", errors="", newline="")
-#リスト形式
-# f = csv.reader(csv_file, delimiter=",", doublequote=True,
-#                lineterminator="\r\n", quotechar='"', skipinitialspace=True)
-f = csv.DictReader(csv_file)
-for row in f:
-    station_datum = {"name": row['station_name'], "lat": row['station_lat'], "lon": row['station_lon']}
-    station_data.append(station_datum)
-    
-station_list = list(map(json.loads, set(map(json.dumps, station_data))))
-print(station_list)
-
-
-# グラフオブジェクトを作成．
+# G = nx.read_edgelist('station_links.csv', nodetype=int)
 G = nx.Graph()
 
-pos = {}
-for station in station_data:
+csv_file = open("station_pos.csv", "r", encoding="utf_8", errors="", newline="")
+f = csv.reader(csv_file)
+pos={}
+for i, row in enumerate(f):
   # 頂点を設定する．引数はid．
-  G.add_node(station['name'])
-  pos[station['name']] = (float(station['lat']) * 1000000, float(station['lon']) * 1000000)
-  # print(pos)
+  G.add_node("st_%s" % row[2])
+  # 座標を設定する．indexがid，代入している値が座標．
+  pos["st_%s" % row[2]] = (int(row[1]), int(row[0]))
 
-#図の作成。figsizeは図の大きさ
-plt.figure(figsize=(9, 7))
+csv_file = open("station_links.csv", "r", encoding="utf_8", errors="", newline="")
+f = csv.reader(csv_file)
+for row in f:
+  G.add_edge("st_%s" % row[0], "st_%s" % row[1])
+
+
+
 
 
 # グラフオブジェクト（点と辺）に座標を関連付けて描画
-nx.draw(G, pos, node_size=0.1)
-#X軸Y軸を表示しない設定
-plt.axis('on')
+nx.draw(G, pos, node_size=1)
+nx.draw_networkx_labels(G, pos, font_size=7)
+
 #図を描画
 plt.show()

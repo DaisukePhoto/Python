@@ -4,7 +4,7 @@ import numpy as np
 import sys
 
 args = sys.argv
-if args == None:
+if len(args) == 1:
   st_id = int(input('駅のidを入力してください : '))
 else:
   st_id = int(args[1])

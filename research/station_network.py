@@ -27,7 +27,7 @@ for row in f:
 
 # グラフオブジェクト（点と辺）に座標を関連付けて描画
 nx.draw(G, pos, node_size=1)
-nx.draw_networkx_labels(G, pos, font_size=7)
+# nx.draw_networkx_labels(G, pos, font_size=7)
 
 #図を描画
 plt.show()

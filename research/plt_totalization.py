@@ -12,9 +12,13 @@ else:
 df_header = pd.read_csv('aggregate_people.csv')
 data = df_header[ (st_id - 1) : st_id ]
 
+# タイトルとラベルの設定
 plt.title('station id : ' + str(st_id))
 plt.xlabel('time range')
 plt.ylabel(('number of people'))
+
+# 軸の範囲を設定
+plt.ylim(0, 150000)
 
 left = ['~6', '6', '615', '630', '645', '7', '715', '730', 
         '745', '8', '815', '830', '845', '9', '915', '930', '945', 

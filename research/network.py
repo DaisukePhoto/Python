@@ -2,7 +2,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
  
-G = nx.read_edgelist('edgelist.txt', nodetype=str)
+G = nx.read_edgelist('data/edgelist.txt', nodetype=str)
  
 #図の作成。figsizeは図の大きさ
 plt.figure(figsize=(10, 8))

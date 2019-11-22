@@ -1,0 +1,51 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import sys
+
+args = sys.argv
+if len(args) == 1:
+  st_id = int(input('駅のidを入力してください : '))
+else:
+  st_id = int(args[1])
+
+df_header = pd.read_csv('data/aggregate_people_5min.csv')
+data = df_header[ (st_id - 1) : st_id ]
+
+plt.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
+plt.figure(figsize=(100, 30), dpi=40)
+
+# タイトルとラベルの設定
+plt.title('station id : ' + str(st_id))
+plt.xlabel('time range')
+plt.ylabel(('number of people'))
+
+# 軸の範囲を設定
+plt.ylim(0, 50000)
+
+left = ['~6', '6', '605','610', '615', '620', '625', '630', '635', '640', '645', '650', '655',
+        '7', '705','710', '715', '720', '725', '730', '735', '740', '745', '750', '755',
+        '8', '805','810', '815', '820', '825', '830', '835', '840', '845', '850', '855',
+        '9', '905','910', '915', '920', '925', '930', '935', '940', '945', '950', '955',
+        '10', '1005','1010', '1015', '1020', '1025', '1030', '1035', '1040', '1045', '1050', '1055',
+        '11', '1105','1110', '1115', '1120', '1125', '1130', '1135', '1140', '1145', '1150', '1155',
+        ]
+
+height = np.array([
+          int(data.bef0600), int(data.af0600), int(data.af0605), int(data.af0610), int(data.af0615), int(data.af0620), int(data.af0625),
+          int(data.af0630), int(data.af0635), int(data.af0640), int(data.af0645), int(data.af0650), int(data.af0655),
+          int(data.af0700), int(data.af0705), int(data.af0710), int(data.af0715), int(data.af0720), int(data.af0725),
+          int(data.af0730), int(data.af0735), int(data.af0740), int(data.af0745), int(data.af0750), int(data.af0755),
+          int(data.af0800), int(data.af0805), int(data.af0810), int(data.af0815), int(data.af0820), int(data.af0825),
+          int(data.af0830), int(data.af0835), int(data.af0840), int(data.af0845), int(data.af0850), int(data.af0855),
+          int(data.af0900), int(data.af0905), int(data.af0910), int(data.af0915), int(data.af0920), int(data.af0925),
+          int(data.af0930), int(data.af0935), int(data.af0940), int(data.af0945), int(data.af0950), int(data.af0955),
+          int(data.af1000), int(data.af1005), int(data.af1010), int(data.af1015), int(data.af1020), int(data.af1025),
+          int(data.af1030), int(data.af1035), int(data.af1040), int(data.af1045), int(data.af1050), int(data.af1055),
+          int(data.af1100), int(data.af1105), int(data.af1110), int(data.af1115), int(data.af1120), int(data.af1125),
+          int(data.af1130), int(data.af1135), int(data.af1140), int(data.af1145), int(data.af1150), int(data.af1155),
+        ])
+
+plt.bar(left, height)
+
+plt.show()

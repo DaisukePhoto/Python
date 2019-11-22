@@ -9,7 +9,7 @@ if len(args) == 1:
 else:
   st_id = int(args[1])
 
-df_header = pd.read_csv('aggregate_people.csv')
+df_header = pd.read_csv('data/aggregate_people_15min.csv')
 data = df_header[ (st_id - 1) : st_id ]
 
 # タイトルとラベルの設定

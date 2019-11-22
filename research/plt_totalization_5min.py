@@ -12,23 +12,12 @@ else:
 df_header = pd.read_csv('data/aggregate_people_5min.csv')
 data = df_header[ (st_id - 1) : st_id ]
 
-plt.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
-plt.figure(figsize=(100, 30), dpi=40)
-
-# タイトルとラベルの設定
-plt.title('station id : ' + str(st_id))
-plt.xlabel('time range')
-plt.ylabel(('number of people'))
-
-# 軸の範囲を設定
-plt.ylim(0, 50000)
-
-left = ['~6', '6', '605','610', '615', '620', '625', '630', '635', '640', '645', '650', '655',
-        '7', '705','710', '715', '720', '725', '730', '735', '740', '745', '750', '755',
-        '8', '805','810', '815', '820', '825', '830', '835', '840', '845', '850', '855',
-        '9', '905','910', '915', '920', '925', '930', '935', '940', '945', '950', '955',
-        '10', '1005','1010', '1015', '1020', '1025', '1030', '1035', '1040', '1045', '1050', '1055',
-        '11', '1105','1110', '1115', '1120', '1125', '1130', '1135', '1140', '1145', '1150', '1155',
+left = ['~6', '6', '6A','6B', '6C', '6D', '6E', '6F', '6G', '6H', '6I', '6J', '6K',
+        '7', '7A','7B', '7C', '7D', '7E', '7F', '7G', '7H', '7I', '7J', '7K',
+        '8', '8A','8B', '8C', '8D', '8E', '8F', '8G', '8H', '8I', '8J', '8K',
+        '9', '9A','9B', '9C', '9D', '9E', '9F', '9G', '9H', '9I', '9J', '9K',
+        '10', '10A','10B', '10C', '10D', '10E', '10F', '10G', '10H', '10I', '10J', '10K',
+        '11', '11A','11B', '11C', '11D', '11E', '11F', '11G', '11H', '11I', '11J', '11K',
         ]
 
 height = np.array([
@@ -46,6 +35,16 @@ height = np.array([
           int(data.af1130), int(data.af1135), int(data.af1140), int(data.af1145), int(data.af1150), int(data.af1155),
         ])
 
+# plt.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
+plt.figure(figsize=(100, 30), dpi=60)
 plt.bar(left, height)
+
+# タイトルとラベルの設定
+plt.title('station id : ' + str(st_id))
+plt.xlabel('time range')
+plt.ylabel(('number of people'))
+
+# 軸の範囲を設定
+plt.ylim(0, 50000)
 
 plt.show()

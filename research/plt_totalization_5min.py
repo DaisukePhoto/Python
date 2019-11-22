@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_pdf import PdfPages
 import pandas as pd
 import numpy as np
 import sys
@@ -35,8 +36,7 @@ height = np.array([
           int(data.af1130), int(data.af1135), int(data.af1140), int(data.af1145), int(data.af1150), int(data.af1155),
         ])
 
-# plt.subplots_adjust(left=0.1, right=0.95, bottom=0.1, top=0.95)
-plt.figure(figsize=(100, 30), dpi=60)
+plt.figure(figsize=(50, 30), dpi=70)
 plt.bar(left, height)
 
 # タイトルとラベルの設定
@@ -45,6 +45,17 @@ plt.xlabel('time range')
 plt.ylabel(('number of people'))
 
 # 軸の範囲を設定
-plt.ylim(0, 50000)
+plt.ylim(0, 51000)
+plt.grid(which='major', axis='y', color='gray',linestyle='-')
+# plt.show()
 
-plt.show()
+# pdfファイルの初期化
+name = f"station_{st_id}"
+print(name)
+pp = PdfPages(f"figs/5min/{name}.pdf")
+
+# figureをセーブする
+pp.savefig()
+
+# pdfファイルをクローズする。
+pp.close()

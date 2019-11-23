@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import matplotlib
 import csv
 import numpy
-from find_specific_attribute_node import find_specific_attribute_node as find_nodes
 
 def convert_pos(lon, lat):
   lon = int( ( float(lon) - 139000000 ) * 0.6 ) + 139000000

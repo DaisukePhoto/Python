@@ -34,25 +34,26 @@ for i in range(2, 62):
   csv_file = open("data/people_5min_percentage.csv", "r", encoding="utf_8", errors="", newline="")
   f = csv.reader(csv_file)
 
-  over_50 = []
-  over_65 = []
+  over_60 = []
+  over_70 = []
   over_80 = []
   for row in f:
     if int(row[i]) >= 80:
       over_80.append(str(row[1]))
-    elif int(row[i]) >= 65:
-      over_65.append(str(row[1]))
-    elif int(row[i]) >= 50:
-      over_50.append(str(row[1]))
+    elif int(row[i]) >= 70:
+      over_70.append(str(row[1]))
+    elif int(row[i]) >= 60:
+      over_60.append(str(row[1]))
 
 
   # グラフオブジェクト（点と辺）に座標を関連付けて描画
   nx.draw(G, pos, node_size=8, node_color='yellowgreen', edge_color='white', weight=1)
-  nx.draw(G, pos, nodelist=over_50, node_size=35, node_color='yellow')
-  nx.draw(G, pos, nodelist=over_65, node_size=40, node_color='orange')
+  nx.draw(G, pos, nodelist=over_60, node_size=35, node_color='yellow')
+  nx.draw(G, pos, nodelist=over_70, node_size=40, node_color='orange')
   nx.draw(G, pos, nodelist=over_80, node_size=50, node_color='red')
 
   #図を描画
+  plt.title('time : ' + str(i))
   plt.axis('off')
   plt.savefig(f"figs_net/station_network_{i-1}.png")
   plt.close()

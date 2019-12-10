@@ -79,5 +79,5 @@ for i in range(2, 72):
   #図を描画
   plt.title('time : ' + str(i))
   plt.axis('off')
-  plt.savefig(f"figs_net/station_network_{i-1}.png")
+  plt.savefig(f"figs_net/5min/station_network_{i-1}.png")
   plt.close()

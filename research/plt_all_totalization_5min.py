@@ -51,11 +51,12 @@ for i in range(1, 650):
   plt.grid(which='major', axis='y', color='gray',linestyle='-')
   # plt.show()
 
+  plt.savefig(f"figs/5min/png/{st_id}_{st_name}.png")
   # pdfファイルの初期化
-  pp = PdfPages(f"figs/5min/{st_id}_{st_name}.pdf")
+  pp = PdfPages(f"figs/5min/pdf/{st_id}_{st_name}.pdf")
 
   # figureをセーブする
-  pp.savefig()
+  # pp.savefig()
 
   # ファイルをクローズする。
   pp.close()

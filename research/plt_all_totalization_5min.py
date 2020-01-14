@@ -4,9 +4,11 @@ import pandas as pd
 import numpy as np
 import sys
 
-df_header = pd.read_csv('data/re_aggregate_people_5min.csv')
+area_name = 'nerima'
+df_header = pd.read_csv(f"data/complete_5min/re_aggregate_5min_{area_name}.csv")
 
 for i in range(1, 650):
+  print(f"\r Progress : {i}/649", end = '')
   st_id = i
   data = df_header[ (st_id - 1) : st_id ]
   st_name = data.values.tolist()[0][0]
@@ -51,13 +53,7 @@ for i in range(1, 650):
   plt.grid(which='major', axis='y', color='gray',linestyle='-')
   # plt.show()
 
-  plt.savefig(f"figs/5min/png/{st_id}_{st_name}.png")
-  # pdfファイルの初期化
-  pp = PdfPages(f"figs/5min/pdf/{st_id}_{st_name}.pdf")
-
-  # figureをセーブする
-  # pp.savefig()
+  plt.savefig(f"figs/5min/{area_name}/{st_id}_{st_name}.png")
 
   # ファイルをクローズする。
-  pp.close()
   plt.close()

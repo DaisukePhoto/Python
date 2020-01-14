@@ -6,8 +6,8 @@ import pandas as pd
 import numpy as np
 import sys
 
-df_header = pd.read_csv('data/aggregate_people_15min.csv')
-print('data/aggregate_people_15min.csv')
+df_header = pd.read_csv('data/aggregate_people_15min_edogawa.csv')
+print('data/aggregate_people_15min_edogawa.csv')
 
 for i in range(1, 650):
   st_id = i
@@ -45,6 +45,6 @@ for i in range(1, 650):
   plt.grid(which='major', axis='y', color='gray',linestyle='-')
 
   # figureをセーブする
-  plt.savefig(f"figs/15min/normal/{st_id}_{st_name}.png")
+  plt.savefig(f"figs/15min/edogawa/{st_id}_{st_name}.png")
   # ファイルをクローズする。
   plt.close()

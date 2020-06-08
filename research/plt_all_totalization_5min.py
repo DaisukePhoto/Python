@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import sys
 
-area_name = 'tokyo'
+area_name = 'fuchu'
 df_header = pd.read_csv(f"data/complete_5min/re_aggregate_5min_{area_name}.csv")
 
 for i in range(1, 650):
@@ -46,7 +46,7 @@ for i in range(1, 650):
 
   # 軸の範囲を設定
   if st_name in ['新宿', '渋谷', '池袋', '東京', '上野', '品川', '秋葉原', '北千住', '赤羽','日暮里']:
-    plt.ylim(0, 55000)
+    plt.ylim(0, 70000)
   else:
     plt.ylim(0, 15000)
 

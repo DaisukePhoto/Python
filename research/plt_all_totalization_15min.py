@@ -1,10 +1,13 @@
+# coding: UTF-8
+
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 import pandas as pd
 import numpy as np
 import sys
 
-df_header = pd.read_csv('data/aggregate_people_15min.csv')
+df_header = pd.read_csv('data/aggregate_people_15min_edogawa.csv')
+print('data/aggregate_people_15min_edogawa.csv')
 
 for i in range(1, 650):
   st_id = i
@@ -41,12 +44,7 @@ for i in range(1, 650):
 
   plt.grid(which='major', axis='y', color='gray',linestyle='-')
 
-  # pdfファイルの初期化
-  pp = PdfPages(f"figs/15min/{st_id}_{st_name}.pdf")
-
   # figureをセーブする
-  pp.savefig()
-
+  plt.savefig(f"figs/15min/edogawa/{st_id}_{st_name}.png")
   # ファイルをクローズする。
-  pp.close()
   plt.close()
